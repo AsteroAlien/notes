@@ -1,0 +1,37 @@
+# Repo-wide ignores
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.user
+*.rsuser
+
+# Visual Studio
+.vs/
+
+# Logs
+*.log
+logs/
+
+# Node (client)
+client/node_modules/
+client/dist/
+client/dist-ssr/
+client/*.local
+
+# .NET (server)
+server/**/[Bb]in/
+server/**/[Oo]bj/
+server/**/[Dd]ebug/
+server/**/[Rr]elease/
+server/**/TestResults/
+server/**/.vs/
+
+# Dotnet tool restore caches (optional)
+.nuget/
