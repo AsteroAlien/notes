@@ -1,3 +1,4 @@
+using Api;
 using Efscaffold.Entities;
 using Infrastructure.Postgres.Scaffolding;
 using Microsoft.AspNetCore.Mvc;
@@ -5,11 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// instantiate app options
+var appOptions = builder.Services.AddAppOptions(builder.Configuration);
+
 builder.Services.AddDbContext<MyDbContext>(conf =>
 {
-    conf.UseNpgsql();
+    conf.UseNpgsql(appOptions.DbConnectionString);
 });
 
+// Add services to the container.
 var app = builder.Build();
 
 //basic api routes 
