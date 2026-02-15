@@ -45,6 +45,7 @@ appsettings.*.json
 
 # Local secrets
 secrets.json
+Efscaffold/.env
 
 # Certificates / signing keys (commonly local-only)
 *.pfx
