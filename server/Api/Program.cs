@@ -3,6 +3,7 @@ using Efscaffold.Entities;
 using Infrastructure.Postgres.Scaffolding;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,10 @@ builder.Services.AddDbContext<MyDbContext>(conf =>
 var app = builder.Build();
 
 //basic api routes 
-app.MapGet("/", ([FromServices]MyDbContext dbContext) =>
+app.MapGet("/", (
+    [FromServices]IOptionsMonitor<AppOptions> optionsMonitor,    
+    [FromServices]MyDbContext dbContext
+) =>
 {
     var objects = dbContext.Notes.ToList();
     return objects;
