@@ -1,0 +1,23 @@
+# IDE & Git
+**/.idea
+**/.vs
+**/.vscode
+**/.git
+**/.gitignore
+
+# Build output
+**/bin
+**/obj
+**/test-results
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Secrets & Local Config
+**/.env
+**/appsettings.Development.json
+**/Properties/launchSettings.json
+
+# Docs
+README.md

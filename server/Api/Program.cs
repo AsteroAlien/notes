@@ -18,14 +18,13 @@ builder.Services.AddDbContext<MyDbContext>(conf =>
 // Add services to the container.
 var app = builder.Build();
 
+app.MapGet("/healthz", () => Results.Ok(new { status = "ok" }));
+
 //basic api routes 
-app.MapGet("/", (
-    [FromServices]IOptionsMonitor<AppOptions> optionsMonitor,    
-    [FromServices]MyDbContext dbContext
-) =>
+app.MapGet("/", ([FromServices]MyDbContext dbContext ) =>
 {
     var objects = dbContext.Notes.ToList();
-    return objects;
+    return Results.Ok(objects);
 });
 
 app.MapGet("/AddNote", ([FromServices] MyDbContext dbContext) =>
@@ -40,6 +39,8 @@ app.MapGet("/AddNote", ([FromServices] MyDbContext dbContext) =>
     };
     dbContext.Notes.Add(myNote);
     dbContext.SaveChanges();
+
+    return Results.Ok(myNote);
 });
 
 app.Run();
